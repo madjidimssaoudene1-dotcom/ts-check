@@ -1,73 +1,141 @@
-# React + TypeScript + Vite
+# 🚗 Vehicle App (Vite + React + TypeScript)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Overview
 
-Currently, two official plugins are available:
+This is a simple React application built with **Vite** and **TypeScript** that demonstrates the use of:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* TypeScript interfaces
+* Class implementation
+* Basic React integration
 
-## React Compiler
+The app defines a `Vehicle` interface and implements it using a `Car` class, then interacts with it inside a React component.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ⚙️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* Vite
+* React
+* TypeScript
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📁 Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+│
+├── models/
+│   ├── Vehicle.ts   # Interface definition
+│   └── Car.ts       # Class implementation
+│
+├── App.tsx          # Main component
+├── main.tsx         # Entry point
+└── index.css
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧩 Features
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* Define a `Vehicle` interface with:
+
+  * `make` (string)
+  * `model` (string)
+  * `year` (number)
+  * `start()` method
+
+* Implement a `Car` class:
+
+  * Uses a constructor to initialize properties
+  * Implements the `start()` method
+
+* Create and use a `Car` instance inside a React component
+
+---
+
+## 🚀 Getting Started
+
+### 1. Create the project
+
+```bash
+npm create vite@latest vehicle-app -- --template react-ts
+cd vehicle-app
+npm install
 ```
+
+---
+
+### 2. Run the development server
+
+```bash
+npm run dev
+```
+
+---
+
+## ▶️ Usage
+
+* Open the app in your browser
+* Click the **"Start Car"** button (if implemented)
+* Check the browser console
+
+### ✅ Expected Output
+
+```
+Car engine started
+```
+
+---
+
+## 📦 Example Code
+
+### Vehicle Interface
+
+```ts
+export interface Vehicle {
+  make: string;
+  model: string;
+  year: number;
+  start(): void;
+}
+```
+
+---
+
+### Car Class
+
+```ts
+import { Vehicle } from "./Vehicle";
+
+export class Car implements Vehicle {
+  make: string;
+  model: string;
+  year: number;
+
+  constructor(make: string, model: string, year: number) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+  }
+
+  start(): void {
+    console.log("Car engine started");
+  }
+}
+```
+
+---
+
+## 💡 Future Improvements
+
+* Add more vehicle types (Bike, Truck, etc.)
+* Use Tailwind CSS for styling
+* Display vehicle data in the UI
+* Add user input to create vehicles dynamically
+
+---
+
+## 📄 License
+
+This project is for educational purposes.
